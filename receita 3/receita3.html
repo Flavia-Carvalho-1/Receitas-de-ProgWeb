@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Cervejas</title>
+
+      <style>
+         #divCerveja {
+            transition: opacity 0.5s ease-in-out;
+            font-family: Arial, sans-serif;
+         }
+
+         .invisivel {
+            opacity: 0;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div id="divBotao">
+         <button id="botaoCarregar">Carregando cervejas...</button>
+      </div>
+
+      <div id="divCerveja"></div>
+   </body>
+
+   <script>
+
+      let divCerveja = document.getElementById("divCerveja")
+      let botao = document.getElementById("botaoCarregar")
+
+      let cervejaVisivel = false
+
+      function alternarCerveja(){
+
+         if (!cervejaVisivel){
+            divCerveja.innerHTML = `<h1>Guinness</h1>`
+            divCerveja.classList.add("invisivel")
+
+            void divCerveja.offsetWidth
+            divCerveja.classList.remove("invisivel")
+
+            cervejaVisivel = true
+
+         } else {
+            divCerveja.classList.add("invisivel")
+            setTimeout(() => {
+               divCerveja.innerHTML = ""
+            }, 500)
+
+            cervejaVisivel = false
+         }
+      }
+
+      botao.addEventListener("click", alternarCerveja)
+   </script>
+</html>
