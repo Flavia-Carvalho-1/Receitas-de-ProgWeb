@@ -1,0 +1,68 @@
+.verso {
+   font-family: Georgia, serif;
+}
+
+.mote {
+   font-family: Georgia, serif;
+   color: red;
+}
+
+.link-poeta:link {
+   color: blue;
+   text-decoration: none;
+}
+
+.link-poeta:visited {
+   color: purple;
+}
+
+.link-poeta:hover {
+   color: orange;
+   text-decoration: underline;
+   font-weight: bold;
+}
+
+.avatar {
+   width: 60px;
+   height: 60px;
+   border-radius: 50%;
+   object-fit: cover;
+   vertical-align: middle;
+   margin-right: 8px;
+}
+
+div.poeta img {
+   border-radius: 50%;
+   width: 60px;
+   height: 60px;
+   object-fit: cover;
+   vertical-align: middle;
+   margin-right: 8px;
+}
+
+table.bebidas {
+   border-collapse: collapse;
+   width: 320px;
+   font-family: Arial, sans-serif;
+}
+
+table.bebidas th {
+   background-color: #2c3e50;
+   color: white;
+   padding: 8px;
+   text-align: left;
+}
+
+table.bebidas td {
+   padding: 8px;
+   border-bottom: 1px solid #ccc;
+}
+
+table.bebidas a {
+   color: #2c7be5;
+   text-decoration: none;
+}
+
+table.bebidas a:hover {
+   text-decoration: underline;
+}
