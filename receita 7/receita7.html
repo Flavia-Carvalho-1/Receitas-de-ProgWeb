@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <meta charset="UTF-8">
+      <title>Consumindo API</title>
+
+      <link href="estilo7.css" rel="stylesheet">
+   </head>
+
+   <body>
+
+      <h1>Usuários</h1>
+      <div><button id="botaoUsuarios">Carregar usuários</button></div>
+      <div id="usuariosDiv"></div>
+
+      <h1>posts</h1>
+      <div><button id="botaoposts">Carregar posts</button></div>
+      <div id="postsDiv"></div>
+
+   </body>
+
+   <script src="receita7.js"></script>
+
+   <script>
+
+      const achatarUsuario = (u) => ({
+         name: u.name,
+         email: u.email,
+         cidade: u.address.city,
+         empresa: u.company.name
+      })
+
+      async function carregarUsuarios(){
+         try{
+            let res = await fetch("https://jsonplaceholder.typicode.com/users")
+            let usuarios = await res.json()
+            let usuariosFormatados = usuarios.map(achatarUsuario)
+            montarTabela(
+               usuariosFormatados,
+               "usuariosDiv",
+               ["Nome", "Email", "Cidade", "Empresa"],
+               ["name", "email", "cidade", "empresa"]
+            )
+         }catch(err){
+            document.getElementById("usuariosDiv").innerHTML = "Não foi possível carregar os usuários."
+         }
+      }
+
+      async function carregarposts(){
+         try{
+            let res = await fetch("https://jsonplaceholder.typicode.com/posts")
+            let posts = await res.json()
+            montarTabela(
+               posts,
+               "postsDiv",
+               ["Título", "Conteúdo"],
+               ["title", "body"]
+            )
+         }catch(err){
+            document.getElementById("postsDiv").innerHTML = "Não foi possível carregar as posts."
+         }
+      }
+
+      let botaoUsuarios = document.getElementById("botaoUsuarios")
+      let botaoposts = document.getElementById("botaoposts")
+
+      botaoUsuarios.addEventListener("click", () => carregarUsuarios() )
+      botaoposts.addEventListener("click", () => carregarposts() )
+
+   </script>
+
+</html>
