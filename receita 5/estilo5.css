@@ -1,0 +1,29 @@
+#divLinks {
+   margin-bottom: 16px;
+}
+
+#divLinks a {
+   margin-right: 15px;
+   text-decoration: none;
+   color: #2a6f97;
+   font-weight: bold;
+}
+
+#divLinks a:hover {
+   text-decoration: underline;
+}
+
+table.sorvetes {
+   border-collapse: collapse;
+}
+
+table.sorvetes th,
+table.sorvetes td {
+   border: 1px solid #ccc;
+   padding: 8px 12px;
+   text-align: left;
+}
+
+.sorvete {
+   padding: 4px 0;
+}

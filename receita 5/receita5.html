@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Sorvetes</title>
+
+      <link href="estilo5.css" rel="stylesheet">
+   </head>
+
+   <body>
+
+      <div id="divLinks">
+         <a href="#" id="linkCarregar">Carregando sorvetes...</a>
+         <a href="#" id="linkOrdenar">Mostrar sorvetes ordenados</a>
+         <a href="#" id="linkEmbaralhar">Embaralhar sorvetes</a>
+      </div>
+
+      <div id="divSorvetes"></div>
+   </body>
+
+   <script>
+      let sorvetes = ["Chocolate", "Morango", "Flocos"]
+
+      const transformar = item => `<div class="sorvete">${item}</div>`
+
+      const transformarLinha = item => `<tr><td>${item}</td></tr>`
+
+      const gerarTabela = (lista) => {
+         const linhas = lista.map(transformarLinha)
+         return `
+            <table class="sorvetes">
+               <tr><th>Sorvete</th></tr>
+               ${linhas.join("\n")}
+            </table>
+         `
+      }
+
+      const div = document.getElementById("divSorvetes")
+
+      const exibir = (lista) => {
+         div.innerHTML = gerarTabela(lista)
+      }
+
+      const carregarDiv = (svs) => {
+         exibir(svs)
+      }
+
+      const ordenarSorvetes = () => {
+         sorvetes.sort()
+         exibir(sorvetes)
+      }
+
+      const embaralharSorvetes = () => {
+         sorvetes.sort(() => Math.random() - 0.5)
+         exibir(sorvetes)
+      }
+
+      const linkCarregar = document.getElementById("linkCarregar")
+      const linkOrdenar = document.getElementById("linkOrdenar")
+      const linkEmbaralhar = document.getElementById("linkEmbaralhar")
+
+      linkCarregar.addEventListener("click", (e) => {
+         e.preventDefault()
+         carregarDiv(sorvetes)
+      })
+
+      linkOrdenar.addEventListener("click", (e) => {
+         e.preventDefault()
+         ordenarSorvetes()
+      })
+
+      linkEmbaralhar.addEventListener("click", (e) => {
+         e.preventDefault()
+         embaralharSorvetes()
+      })
+   </script>
+</html>
