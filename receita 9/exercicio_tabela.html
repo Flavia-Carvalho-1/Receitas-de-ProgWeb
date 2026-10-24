@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>ReactZero - Tabela</title>
+   </head>
+   <body>
+      <div id="app"></div>
+
+      <script src="../libs/react.js"></script>
+      <script src="../libs/react-dom.js"></script>
+
+      <script>
+         const e = React.createElement;
+
+         ReactDOM.render(
+            e('table', {border: 1},
+               e('thead', null,
+                  e('tr', null,
+                     e('th', null, 'NOME'),
+                     e('th', null, 'FUNÇÃO')
+                  )
+               ),
+               e('tbody', null,
+                  e('tr', null,
+                     e('td', null, 'LULA'),
+                     e('td', null, 'MARECHAL')
+                  ),
+                  e('tr', null,
+                     e('td', null, 'JANONES'),
+                     e('td', null, 'GENERAL')
+                  )
+               )
+            ),
+            document.getElementById('app')
+         );
+      </script>
+   </body>
+</html>
