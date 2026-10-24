@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>React Um - JSX</title>
+      <link rel="stylesheet" href="estilo10.css">
+   </head>
+   <body>
+      <div id="controles"></div>
+      <div id="app"></div>
+
+      <script src="../libs/react.js"></script>
+      <script src="../libs/react-dom.js"></script>
+      <script src="../libs/babel.js"></script>
+
+      <script type="text/babel">
+
+         const bebidas = [
+            {id: 1, nome: 'Havana', marca: 'Engenho Anísio Santiago', estado: 'PB'},
+            {id: 2, nome: 'Ypióca', marca: 'Ypióca',                  estado: 'CE'},
+            {id: 3, nome: 'Pitú',   marca: 'Pitú',                    estado: 'PE'},
+            {id: 4, nome: '51',     marca: 'Companhia Müller de Bebidas', estado: 'SP'}
+         ];
+
+         function Cabecalho() {
+            return <h1>Minha tabela de bebidas</h1>;
+         }
+
+         function TabelaBebidas(props) {
+            return (
+               <table id="tabela">
+                  <thead>
+                     <tr><th>Nome</th><th>Marca</th><th>Estado</th></tr>
+                  </thead>
+                  <tbody>
+                     {props.bebidas.map(b =>
+                        <tr key={b.id}>
+                           <td>{b.nome}</td>
+                           <td>{b.marca}</td>
+                           <td>{b.estado}</td>
+                        </tr>
+                     )}
+                  </tbody>
+               </table>
+            );
+         }
+
+         function mostrarTabela() {
+            ReactDOM.render(
+               <div>
+                  <Cabecalho/>
+                  <TabelaBebidas bebidas={bebidas}/>
+               </div>
+               ,
+               document.getElementById("app"));
+         }
+
+         ReactDOM.render(
+            <button onClick={mostrarTabela}>Mostrar tabela de bebidas</button>
+            ,
+            document.getElementById("controles"));
+
+      </script>
+   </body>
+</html>
