@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>ReceitaReact - Classes</title>
+   </head>
+   <link rel="stylesheet" href="estilo11.css">
+   <body>
+      <div id="app">
+
+      </div>
+
+      <script src="../libs/react.js"></script>
+      <script src="../libs/react-dom.js"></script>
+      <script src="../libs/babel.js"></script>
+
+      <script type="text/babel">
+
+         class TabelaBebidas extends React.Component {
+
+            render() {
+               return (
+                  <div className="cartao">
+                     <h1>{this.props.titulo}</h1>
+                     <table className="tabela">
+                        <thead>
+                           <tr><th>Nome</th><th>Marca</th></tr>
+                        </thead>
+                        <tbody>
+                           <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
+                        </tbody>
+                     </table>
+                  </div>
+               )
+            }
+
+         }
+
+         class ListaMarcas extends React.Component {
+
+            render() {
+               return (
+                  <div className="cartao">
+                     <h2>{this.props.titulo}</h2>
+                     <ul className="marcas">
+                        {this.props.marcas.map(m => <li key={m}>{m}</li>)}
+                     </ul>
+                  </div>
+               )
+            }
+
+         }
+
+         class Rodape extends React.Component {
+
+            render() {
+               return (
+                  <footer>
+                     <hr/>
+                     <small>{this.props.texto}</small>
+                  </footer>
+               )
+            }
+
+         }
+
+         class Aplicacao extends React.Component {
+
+            render() {
+               return (
+                  <div>
+                     <TabelaBebidas titulo="Tabela de Bebidas"/>
+                     <TabelaBebidas titulo="Tabela de Cana"/>
+                     <ListaMarcas titulo="Marcas conhecidas"
+                                  marcas={['Engenho Anísio Santiago', 'Ypióca', 'Pitú']}/>
+                     <Rodape texto="Receita 11 - Componentes com classes"/>
+                  </div>
+               )
+            }
+
+         }
+
+         ReactDOM.render(
+            <Aplicacao/>
+            ,
+            document.getElementById("app"))
+
+      </script>
+   </body>
+</html>
