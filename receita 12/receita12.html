@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>ReceitaReact - 3</title>
+      <link rel="stylesheet" href="estilo12.css">
+   </head>
+
+   <body>
+      <div id="app">
+
+      </div>
+
+      <script src="../libs/react.js"></script>
+      <script src="../libs/react-dom.js"></script>
+      <script src="../libs/babel.js"></script>
+
+      <script type="text/babel">
+
+         const TabelaBebidas = ({titulo, subtitulo, cabecalhos, linhas}) => {
+
+            return (
+               <div className="cartao">
+                  <h1>{titulo}</h1>
+                  <h2>{subtitulo}</h2>
+
+                  <table className="tabela">
+
+                     
+                     <thead>
+                        <tr>
+                           {cabecalhos.map(cabecalho =>
+                              <th key={cabecalho}>{cabecalho}</th>
+                           )}
+                        </tr>
+                     </thead>
+
+                     
+                     <tbody>
+                        {linhas.map((linha, i) =>
+                           <tr key={i}>
+                              {linha.map((valor, j) =>
+                                 <td key={j}>{valor}</td>
+                              )}
+                           </tr>
+                        )}
+                     </tbody>
+
+                  </table>
+               </div>
+            )
+         }
+
+         const cabecalhosCana = ["Nome", "Marca"]
+         const linhasCana = [
+            ["Havana", "Engenho Anísio Santiago"],
+            ["Ypióca", "Ypióca"],
+            ["Pitú",   "Pitú"]
+         ]
+
+         const cabecalhosDetalhes = ["Nome", "Marca", "Estado", "Tipo"]
+         const linhasDetalhes = [
+            ["Havana", "Engenho Anísio Santiago", "PB", "Ouro"],
+            ["Ypióca", "Ypióca",                  "CE", "Prata"]
+         ]
+
+         const App = () => {
+            return (
+               <div>
+                  <TabelaBebidas titulo="Bebidas alcoólicas"
+                                 subtitulo="olhe o fígado"
+                                 cabecalhos={cabecalhosCana}
+                                 linhas={linhasCana}/>
+
+                  <TabelaBebidas titulo="mais detalhes"
+                                 cabecalhos={cabecalhosDetalhes}
+                                 linhas={linhasDetalhes}/>
+               </div>
+            )
+         }
+
+         ReactDOM.render(
+            <App/>
+            ,
+            document.getElementById("app"))
+
+      </script>
+   </body>
+</html>
